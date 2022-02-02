@@ -1,0 +1,62 @@
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 100%;
+      }
+      
+     h1 {
+        font-family: monospace;
+        font-style: bold;
+        font-size: 40px;
+        color: #3a3a3a;
+        text-shadow: #e41932 1px 1px 2px;
+
+     }
+     h2 {
+        font-family: monospace;
+        color: #fff;
+        text-shadow: 1px 1px 2px #e41932 ;
+
+     }
+
+     h3 {
+        font-family: monospace;
+        color: #fff;
+        text-shadow: 1px 1px 2px #e41932;
+     }
+
+     body {
+         font-family: sans-serif;
+         background-color: #3a3a3a;
+         color: #f2f2f2;
+     }
+
+     .text-copy {
+         top: 0;
+         margin-right: 0;
+         font-family: monospace;
+         color: #fff;
+     }
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main main main'
+    'footer footer footer footer footer footer';
+  padding-top: 0;
+}
+
+.grid-container > div {
+  text-align: left;
+  padding: 0 0 0 20px;
+}
+
+.btn {
+    background-color: #e41932;
+    color: #fff;
+}

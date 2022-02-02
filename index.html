@@ -6,29 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="Index.js"></script>
     <script type="text/javascript" src="LatLongConvert.js"></script>
-    <script type="module" src="LocationHandler.js"></script>  
-    <title>COA Tool</title>
+    <script type="text/javascript" src="Map.js"></script>
+    <script type="module" src="LocationHandler.js"></script> 
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <title>Dish Drone COA Tool</title>
 </head>
 <body>
-    <div id="header">
-        <h1>COA Tool</h1>
-    </div>
+    <div class="grid-container">
+        <div class="item1">
+            <div id="header" style="background-color: #fff;">
+                <h1> <img src="dish-drone-logo.png" alt="Dish Drone" width="70" height="70"> COA Tool</h1>
+            </div>
+        </div>
+    <div class="item2">    
     <form id="coords">
+        <h3>Tower Info</h3>
         <input type="number" id="lat" name="lat" placeholder="Lat"><br>
         <input type="number" id="long" name="long" placeholder="Long">
     </form>
-    <button onclick="convert()">Convert</button><br>
-    <form id="frm1">     
-        <input type="date" id="start" name="start" value="Start Date"> start<br>   
-        <input type="date" id="end" name="end" value="End Date"> end<br> 
-        <input type="text" id="title" name="title" placeholder="Title"><br>        
+    <button class="btn" onclick="convert();  initMap();">Convert</button><br><br>
+
+    <form id="frm1"> 
+    
         <input type="number" id="height" name="height" placeholder="Tower Height"><br>
-        <input type="number" id="height" name="height" placeholder="Height Above Tower"><br>  
-</form>
-<button onclick="myFunction()">Submit</button>
+        <input type="number" id="hat" name="hat" placeholder="Height Above Tower"><br>
+        <input type="text" id="title" name="title" placeholder="Job #"><br>
+        
+        <h3>Date Range</h3>
+        <input type="date" id="start" name="start" placeholder="Start Date"> Start <br>
+        <input type="date" id="end" name="end" placeholder="End Date"> End <br>        
 
-    <p id="demo2"></p> 
+        <h3>Pilot Info</h3>
+        
+        <input type="text" id="name" name="name" placeholder="Name of RPIC"><br>
+        <input type="text" id="part107" name="part107" placeholder="Part 107 Lic.#" maxlength="7"><br>
+        <input type="text" id="faaId" name="faaId" placeholder="FAA reg#" maxlength="10"><br>
+          
+    </form>
+        <button class="btn" onclick="myFunction(); convert();">Submit</button>
+    </div>
+    <div class="item3">    
+        <p id="demo2"></p> 
+        <p id="demo" class="text-copy"></p>
+        <div id="map"></div>
+    </div>
+    <div class="item4">
+        
+    </div>
 
-    <p id="demo"></p> 
+    
+        
+        
+      
+
+   
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvACrjC5c-8a-TxSEQxpTxHaE6g2WEIZs&callback=initMap&v=weekly"
+      async
+    ></script>
+    </div>
 </body>
 </html>

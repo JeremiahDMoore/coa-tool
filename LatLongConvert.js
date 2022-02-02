@@ -38,5 +38,5 @@ function convert(lat, long) {
         var longMinutes = "0" + longMinutes;
     }
 
-    document.getElementById("demo2").innerHTML =  "COORDS:" + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LONG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection;
+    document.getElementById("demo2").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection;
 }
