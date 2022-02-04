@@ -7,8 +7,14 @@ function initMap() {
     const vegas = new google.maps.LatLng(lat, long);
     const map = new google.maps.Map(document.getElementById("map"), {
       center: vegas,
-      zoom: 20,
+      zoom: 8,
     });
+
+    const marker = new google.maps.Marker({
+      position: vegas,
+      map: map,
+    });
+
     const coordInfoWindow = new google.maps.InfoWindow();
   
     coordInfoWindow.setContent(createInfoWindowContent(vegas, map.getZoom()));
@@ -18,30 +24,66 @@ function initMap() {
       coordInfoWindow.setContent(createInfoWindowContent(vegas, map.getZoom()));
       coordInfoWindow.open(map);
     });
+
+    const geocoder = new google.maps.Geocoder();
+    const infowindow = new google.maps.InfoWindow();
+  
+    document.getElementById("lat-lng-btn").addEventListener("click", () => {
+      geocodeLatLng(geocoder, map, infowindow);
+    });
   }
   
-  const TILE_SIZE = 256;
+   const TILE_SIZE = 256;
   
-  function createInfoWindowContent(latLng, zoom) {
-    const scale = 1 << zoom;
-    const worldCoordinate = project(latLng);
-    const pixelCoordinate = new google.maps.Point(
-      Math.floor(worldCoordinate.x * scale),
-      Math.floor(worldCoordinate.y * scale)
-    );
-    const tileCoordinate = new google.maps.Point(
-      Math.floor((worldCoordinate.x * scale) / TILE_SIZE),
-      Math.floor((worldCoordinate.y * scale) / TILE_SIZE)
-    );
-    return [
-      "Vegas Baby",
-      "LatLng: " + latLng,
-      "Zoom level: " + zoom,
-      "World Coordinate: " + worldCoordinate,
-      "Pixel Coordinate: " + pixelCoordinate,
-      "Tile Coordinate: " + tileCoordinate,
-    ].join("<br>");
-  }
+   function createInfoWindowContent(latLng, zoom) {
+     const scale = 1 << zoom;
+     const worldCoordinate = project(latLng);
+     const pixelCoordinate = new google.maps.Point(
+       Math.floor(worldCoordinate.x * scale),
+       Math.floor(worldCoordinate.y * scale)
+     );
+     const tileCoordinate = new google.maps.Point(
+       Math.floor((worldCoordinate.x * scale) / TILE_SIZE),
+       Math.floor((worldCoordinate.y * scale) / TILE_SIZE)
+     );
+     return [
+       "Tower location",
+       "LatLng: " + latLng,
+       "Zoom level: " + zoom,
+       "World Coordinate: " + worldCoordinate,
+       "Pixel Coordinate: " + pixelCoordinate,
+       "Tile Coordinate: " + tileCoordinate,
+     ].join("<br>");
+   }
+
+function geocodeLatLng(geocoder, map, infowindow) {
+  // const input = document.getElementById("latlng").value;
+  const latlngStr = lat + "," + long
+  const latlng = {
+    lat: parseFloat(latlngStr[0]),
+    lng: parseFloat(latlngStr[1]),
+  };
+
+  geocoder
+    .geocode({ location: latlng })
+    .then((response) => {
+      if (response.results[0]) {
+        map.setZoom(11);
+
+        const marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+        });
+
+        infowindow.setContent(response.results[0].formatted_address);
+        infowindow.open(map, marker);
+      } else {
+        window.alert("No results found");
+      }
+    })
+    .catch((e) => window.alert("Geocoder failed due to: " + e));
+}
+
   
   // The mapping between latitude, longitude and pixels is defined by the web
   // mercator projection.

@@ -31,7 +31,7 @@
         <input type="number" id="lat" name="lat" placeholder="Lat"><br>
         <input type="number" id="long" name="long" placeholder="Long">
     </form>
-    <button class="btn" onclick="convert();  initMap();">Convert</button><br><br>
+    <button id="lat-lng-btn" class="btn" onclick="convert();  initMap();">Convert</button><br><br>
 
     <form id="frm1"> 
     
@@ -52,11 +52,14 @@
     </form>
         <button class="btn" onclick="myFunction(); convert();">Format</button>
     </div>
-    <div class="item3">    
+    <div class="item3">
+        <p id="demo2"></p>    
+        <p id="instr" class="text-copy"></p>
         <div id="date" class="text-copy"></div>
         <div id="job" class="text-copy"></div>
         <p id="go" class="text-copy"></p>
         <p id="copy" class="text-copy"></p>
+        <p id="instr2" class="text-copy"></p>
 
         <div id="map"></div>
     </div>
@@ -76,5 +79,6 @@
       async
     ></script>
     </div>
+    <br><br>
 </body>
 </html>
