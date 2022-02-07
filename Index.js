@@ -24,21 +24,20 @@
 
     var th = Number.parseInt(x.elements[0].value) + Number.parseInt(x.elements[1].value);
 
-    dates = "Requested Date Range for Flight: " + "<br>" + formattedStartDate + " to " + formattedEndDate  + "<br>"
-    
-    job = "Job ID: " + title
+    dates = "<br>Requested Date Range for Flight: " + "<br>" + formattedStartDate + " to " + formattedEndDate  
+    job = "Job ID: " + title 
     descr = "Drone scan of " + height + "ft tower."
     copy = "Flight will be at or below " + th + "ft AGL at all times. Flight will remain within 400ft laterally of the tower at all times. Flight duration expected to be approximately 2 hours. Drone will be flown within VLOS at all times, in non-hazardous conditions, during daylight hours only. " + "<br>" + "<br>" +
     "Flight will be conducted by:"  + "<br>" + "RPIC: " + name + "Part 107: " + part107 + "Aircraft: DJI Phantom 4 Pro V2" + "<br>" + "FAA #: " + faaId + "<br>"
-    instr = "---------- Copy this section, paste in COA application ------------"
-    instr2 = "--------------------------- End Copy ------------------------------"
+    // instr = "(Copy this section, paste in COA application)"
+    // // instr2 = "--------------------------- End Copy ------------------------------"
 
-    document.getElementById("instr").innerHTML = instr
+    // document.getElementById("instr").innerHTML = instr
     document.getElementById("date").innerHTML = dates
     document.getElementById("job").innerHTML = job
     document.getElementById("go").innerHTML = descr
     document.getElementById("copy").innerHTML = copy
-    document.getElementById("instr2").innerHTML = instr2
+    // document.getElementById("instr2").innerHTML = instr2
 
     
         

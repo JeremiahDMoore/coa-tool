@@ -7,8 +7,7 @@
     <script type="text/javascript" src="Index.js"></script>
     <script type="text/javascript" src="LatLongConvert.js"></script>
     <script type="text/javascript" src="Map.js"></script>
-    <script type="module" src="LocationHandler.js"></script> 
-
+    
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -18,6 +17,7 @@
 
     <title>Dish Drone COA Tool</title>
 </head>
+
 <body>
     <div class="grid-container">
         <div class="item1">
@@ -27,11 +27,12 @@
         </div>
     <div class="item2">    
     <form id="coords">
-        <h3>Tower Info</h3>
-        <input type="number" id="lat" name="lat" placeholder="Lat"><br>
-        <input type="number" id="long" name="long" placeholder="Long">
+        <span class="egg">Tower Info</span><br>
+        <input type="number" id="lat" name="lat" placeholder="Lat" value="39.661056635883135"> Lat<br>
+        <input type="number" id="long" name="long" placeholder="Long" value="-105.01009758460124"> Long
     </form>
-    <button id="lat-lng-btn" class="btn" onclick="convert();  initMap();">Convert</button><br><br>
+    <!-- <input id="submit" type="button" value="Reverse Geocode" onclick="convert();  initMap();"/> -->
+    <!-- <button id="submit" class="btn" onclick="convert();  initMap();">Convert</button><br><br> -->
 
     <form id="frm1"> 
     
@@ -39,27 +40,27 @@
         <input type="number" id="hat" name="hat" placeholder="Height Above Tower"><br>
         <input type="text" id="title" name="title" placeholder="Job #"><br>
         
-        <h3>Date Range</h3>
+        <span class="egg">Date Range</span><br>
         <input type="date" id="start" name="start" placeholder="Start Date"> Start <br>
         <input type="date" id="end" name="end" placeholder="End Date"> End <br>        
 
-        <h3>Pilot Info</h3>
-        
+        <span class="egg">Pilot Info</span>  <br>     
         <input type="text" id="name" name="name" placeholder="Name of RPIC"><br>
         <input type="text" id="part107" name="part107" placeholder="Part 107 Lic.#" maxlength="7"><br>
         <input type="text" id="faaId" name="faaId" placeholder="FAA reg#" maxlength="10"><br>
           
     </form>
-        <button class="btn" onclick="myFunction(); convert();">Format</button>
+        <button id="submit" class="btn" onclick="myFunction(); convert(); initMap();">Format Copy</button>
     </div>
     <div class="item3">
-        <p id="demo2"></p>    
-        <p id="instr" class="text-copy"></p>
+        <div id="lat-long-result" class="text-copy"></div>
+        <div id="result" class="text-copy"></div>  
+        <!-- <h6 id="instr"></h6> -->
         <div id="date" class="text-copy"></div>
         <div id="job" class="text-copy"></div>
-        <p id="go" class="text-copy"></p>
-        <p id="copy" class="text-copy"></p>
-        <p id="instr2" class="text-copy"></p>
+        <div id="go" class="text-copy"></div>
+        <div id="copy" class="text-copy"></div>
+        <!-- <p id="instr2" class="text-copy"></p> -->
 
         <div id="map"></div>
     </div>
@@ -67,15 +68,9 @@
         
     </div>
 
-    
-        
-        
-      
-
-   
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvACrjC5c-8a-TxSEQxpTxHaE6g2WEIZs&callback=initMap&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvACrjC5c-8a-TxSEQxpTxHaE6g2WEIZs&callback=initMap&v=weekly&channel=2"
       async
     ></script>
     </div>

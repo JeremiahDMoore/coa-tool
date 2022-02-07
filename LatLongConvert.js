@@ -38,5 +38,17 @@ function convert(lat, long) {
         var longMinutes = "0" + longMinutes;
     }
 
-    document.getElementById("demo2").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection;
+    const PI = 3.141592;
+
+    var lat1 = lat * ( PI / 180.0 );  
+    var lat2 = 39.661056635883135 * ( PI / 180.0 );  
+    var lon1 = long * ( PI / 180.0 );  
+    var lon2 = -105.01009758460124 * ( PI / 180.0 );  
+
+    var logicNM = (3963 * Math.acos( Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1) )) / 1.151;
+
+    document.getElementById("lat-long-result").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection + "<br>" + logicNM + " NM from HQ";
+    window.open("https://b4ufly.aloft.ai/?lat=" + LATITUDE + "&long=" + LONGITUDE, "MapWindow", "width=1200,height=900");
+    // window.open("https://earth.google.com/web/search/" + LATITUDE + "+" + LONGITUDE);  
+      
 }
