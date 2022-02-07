@@ -54,7 +54,7 @@ function convert(lat, long) {
 
     logicNM = logicNM.toFixed(2);
 
-    document.getElementById("lat-long-result").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection + "<br>" + logicNM + " NM (insert heading here) from " + airportCode ;
+    document.getElementById("lat-long-result").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection + "<br>" + logicNM + " NM (insert direction here) of " + airportCode ;
     window.open("https://b4ufly.aloft.ai/?lat=" + LATITUDE + "&long=" + LONGITUDE, "MapWindow", "width=1200,height=900");
     // window.open("https://earth.google.com/web/search/" + LATITUDE + "+" + LONGITUDE);  
       
