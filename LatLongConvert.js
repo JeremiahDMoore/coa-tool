@@ -4,6 +4,11 @@ function convert(lat, long) {
     var lat = x.elements[0].value;
     var long = x.elements[1].value;
 
+    var y = document.getElementById("nautical");
+    var lati = y.elements[0].value;
+    var longi = y.elements[1].value;
+    var airportCode = y.elements[2].value;
+
     var latDirection = "N";
     var longDirection = "E";
 
@@ -41,13 +46,15 @@ function convert(lat, long) {
     const PI = 3.141592;
 
     var lat1 = lat * ( PI / 180.0 );  
-    var lat2 = 39.661056635883135 * ( PI / 180.0 );  
+    var lat2 = lati * ( PI / 180.0 );  
     var lon1 = long * ( PI / 180.0 );  
-    var lon2 = -105.01009758460124 * ( PI / 180.0 );  
+    var lon2 = longi * ( PI / 180.0 );  
 
     var logicNM = (3963 * Math.acos( Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1) )) / 1.151;
 
-    document.getElementById("lat-long-result").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection + "<br>" + logicNM + " NM from HQ";
+    logicNM = logicNM.toFixed(2);
+
+    document.getElementById("lat-long-result").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection + "<br>" + logicNM + " NM (insert heading here) from " + airportCode ;
     window.open("https://b4ufly.aloft.ai/?lat=" + LATITUDE + "&long=" + LONGITUDE, "MapWindow", "width=1200,height=900");
     // window.open("https://earth.google.com/web/search/" + LATITUDE + "+" + LONGITUDE);  
       

@@ -1,5 +1,4 @@
 function initMap() {
-
   var x = document.getElementById("coords");
   var lat = x.elements[0].value;
   var long = x.elements[1].value;
@@ -10,19 +9,15 @@ function initMap() {
   });
   const geocoder = new google.maps.Geocoder();
   const infowindow = new google.maps.InfoWindow();
-
   geocodeLatLng(geocoder, map, infowindow);
-
   document.getElementById("submit").addEventListener("click", () => {
     geocodeLatLng(geocoder, map, infowindow);
   });
 }
-
 function geocodeLatLng(geocoder, map, infowindow) {
   const inputLat = document.getElementById("lat").value;
   const inputLong = document.getElementById("long").value;
   const input = inputLat + "," + inputLong;
-
   const latlngStr = input.split(",", 2);
   const latlng = {
     lat: parseFloat(latlngStr[0]),
@@ -34,12 +29,10 @@ function geocodeLatLng(geocoder, map, infowindow) {
     .then((response) => {
       if (response.results[0]) {
         map.setZoom(8);
-
         const marker = new google.maps.Marker({
           position: latlng,
           map: map,
-        });
-        
+        });        
         infowindow.setContent(response.results[0].formatted_address);
         document.getElementById(
           "result"
