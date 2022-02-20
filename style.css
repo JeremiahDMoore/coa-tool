@@ -2,9 +2,13 @@
        * element that contains the map. */
        #map {
         height: 400px;
-        width: 100%;
-        margin-right: 5%;
+        width: 90%;
+        margin-right: 10%;
         border: #000 solid 1px;
+      }
+
+      #header {
+        margin-left: 5%;
       }
       
      h1 {
@@ -33,6 +37,7 @@
 
      body {
        font-size: 100%;
+       margin-left: 5%;
          font-family: sans-serif;
          background-color: #3a3a3a;
          color: #f2f2f2;
@@ -41,6 +46,7 @@
        background-color: #f2f2f2;
        color: #3a3a3a;
        text-align: center;
+       margin-right: 10%;
      }
      #legendBlue {
        background-color: rgb(105, 105, 231);
@@ -51,8 +57,10 @@
       background-color: rgb(240, 73, 137);
 
     }
+    footer {
+      text-align: center;
 
-
+    }
 
 
      .text-copy {
