@@ -24,7 +24,7 @@
 
     var th = Number.parseInt(x.elements[0].value) + Number.parseInt(x.elements[1].value);
 
-    dates = "<br>Requested Date Range for Flight: " + "<br>" + formattedStartDate + " to " + formattedEndDate  
+    dates = "Requested Date Range for Flight: " + "<br>" + formattedStartDate + " to " + formattedEndDate  
     job = "Job ID: " + title 
     descr = "Drone scan of " + height + "ft tower."
     copy = "Flight will be at or below " + th + "ft AGL at all times. Flight will remain within 400ft laterally of the tower at all times. Flight duration expected to be approximately 2 hours. Drone will be flown within VLOS at all times, in non-hazardous conditions, during daylight hours only. " + "<br>" + "<br>" +
