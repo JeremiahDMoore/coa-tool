@@ -9,6 +9,22 @@ function convert(lat, long) {
     var longi = y.elements[1].value;
     var airportCode = y.elements[2].value;
 
+    let direction = "(insert cardinal direction)" 
+
+
+// Direction formula UNFINISHED
+    // if (lati > lat && Math.abs((longi * 0.005) - (long * 0.005)) <= 0.001) {
+    //     direction = "due S"
+    // } else if (lati < lat && Math.abs((longi * 0.005) - (long * 0.005)) <= 0.001) {
+    //     direction = "due N"
+    // } else if (longi < long && Math.abs((lati * 0.005) - (lat * 0.005)) <= 0.001) {
+    //     direction = "due W"
+    // } else if (longi > long && Math.abs((lati * 0.005) - (lat * 0.005)) <= 0.001) {
+    //     direction = "due E"
+    // }
+   
+
+// Tower Location Latitude and Longitude DEC format => DD MM' SS" format
     var latDirection = "N";
     var longDirection = "E";
 
@@ -42,7 +58,7 @@ function convert(lat, long) {
     if (longMinutes < 10) {
         var longMinutes = "0" + longMinutes;
     }
-
+// Nautical mile conversion
     const PI = 3.141592;
 
     var lat1 = lat * ( PI / 180.0 );  
@@ -53,8 +69,8 @@ function convert(lat, long) {
     var logicNM = (3963 * Math.acos( Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1) )) / 1.151;
 
     logicNM = logicNM.toFixed(2);
-
-    document.getElementById("lat-long-result").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection + "<br>" + logicNM + " NM (insert direction here) of " + airportCode ;
+//Cast to page, open B4Ufly at tower coordinates
+    document.getElementById("lat-long-result").innerHTML =  "Location: " + LATITUDE + ", " + LONGITUDE + "<br>" + "LAT " + latDegrees + "° " + latMinutes + "' " + latSeconds + "\"" + latDirection + "<br>" + "LNG " + longDegrees + "° " + longMinutes + "' " + longSeconds + "\"" + longDirection + "<br>" + logicNM + " NM " + direction + " of " + airportCode ;
     window.open("https://b4ufly.aloft.ai/?lat=" + LATITUDE + "&long=" + LONGITUDE, "MapWindow", "width=1200,height=900");
     // window.open("https://earth.google.com/web/search/" + LATITUDE + "+" + LONGITUDE);  
       

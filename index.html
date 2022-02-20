@@ -28,8 +28,8 @@
     <div class="item2">    
     <form id="coords">
         <span class="egg">Tower Info</span><br>
-        <input type="number" id="lat" name="lat" placeholder="Lat" value="39.661056635883135"> Lat<br>
-        <input type="number" id="long" name="long" placeholder="Long" value="-105.01009758460124"> Long
+        <input type="number" id="latAir" name="latAir" placeholder="Lat" value="39.661056635883135"> Lat<br>
+        <input type="number" id="longAir" name="longAir" placeholder="Long" value="-105.01009758460124"> Long
     </form>
     <!-- <input id="submit" type="button" value="Reverse Geocode" onclick="convert();  initMap();"/> -->
     <!-- <button id="submit" class="btn" onclick="convert();  initMap();">Convert</button><br><br> -->
@@ -56,7 +56,7 @@
             <span class="egg">Airport Coordinates (nearest runway) </span><br>
             <input type="number" id="lat" name="lat" placeholder="Lat" value="39.661056635883135"> Lat<br>
             <input type="number" id="long" name="long" placeholder="Long" value="-105.01009758460124"> Long<br>
-            <input type="text" id="airport" name="airport" placeholder="Airport Code" maxlength="4"><br>
+            <input type="text" id="airport" name="airport" value="(insert airport code)" maxlength="4"><br>
 
             
         </form>
@@ -72,6 +72,12 @@
         <!-- <p id="instr2" class="text-copy"></p> -->
 
         <div id="map"></div>
+        <div id="legend">
+          
+            <img src="http://maps.google.com/mapfiles/ms/icons/pink-dot.png">= Tower 
+            <img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png">= Airport 
+           
+        </div>
     </div>
     <div class="item4">      
     </div> 
@@ -90,4 +96,7 @@
     </div>
     <br><br>
 </body>
+<footer>
+    copyright 2022 Aces Up Media
+</footer>
 </html>
