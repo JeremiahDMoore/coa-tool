@@ -48,8 +48,8 @@
        margin-right: 10%;
      }
      #legendBlue {
-       background-color: rgb(105, 105, 231);
-       margin-left: 25%;
+       font-style: italic;
+       text-shadow: 1px 1px 2px rgb(105, 105, 231);
 
      }
      #legendPink {
