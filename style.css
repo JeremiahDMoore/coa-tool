@@ -7,9 +7,8 @@
         border: #000 solid 1px;
       }
 
-      #header {
-        margin-left: 5%;
-      }
+      /* #header {
+      } */
       
      h1 {
         font-family: monospace;
@@ -91,7 +90,7 @@
 
 .btn {
     margin-top:5px;
-    padding: 4px 10px 4px 10px;
+    padding: 10px 20px 10px 20px;
     border-radius: 10px;
     background-color: #e41932;
     color: #fff;
