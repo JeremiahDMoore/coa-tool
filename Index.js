@@ -2,13 +2,13 @@
   function myFunction() {
     var x = document.getElementById("frm1");
     var height = x.elements[0].value;
-    var hat = x.elements[1].value + "<br>";
-    var title = x.elements[2].value + "<br>";
-    var start = x.elements[3].value + "<br>";
-    var end = x.elements[4].value + "<br>";
-    var name = x.elements[5].value + "<br>";
-    var part107 = x.elements[6].value + "<br>"; 
-    var faaId = x.elements[7].value + "<br>";
+    var hat = x.elements[1].value + "\n";
+    var title = x.elements[2].value + "\n";
+    var start = x.elements[3].value + "\n";
+    var end = x.elements[4].value + "\n";
+    var name = x.elements[5].value + "\n";
+    var part107 = x.elements[6].value + "\n"; 
+    var faaId = x.elements[7].value + "\n";
     
     var startYear = start.split("-")[0];
     var startMonth = start.split("-")[1];
@@ -22,24 +22,35 @@
 
     var formattedEndDate = (endMonth + "/" + endDay + "/" + endYear).toString();
 
-    var th = Number.parseInt(x.elements[0].value) + Number.parseInt(x.elements[1].value);
+    var th = Number(height) + Number(hat);
 
-    dates = "Requested Date Range for Flight: " + "<br>" + formattedStartDate + " to " + formattedEndDate  
-    job = "Job ID: " + title 
-    descr = "Drone scan of " + height + "ft tower."
-    copy = "Flight will be at or below " + th + "ft AGL at all times. Flight will remain within 400ft laterally of the tower at all times. Flight duration expected to be approximately 2 hours. Drone will be flown within VLOS at all times, in non-hazardous conditions, during daylight hours only. " + "<br>" + "<br>" +
+    if (![height, hat].every((value) => value.trim() !== "" && Number.isInteger(Number(value)) && Number(value) >= 0)) {
+      for (const id of ["date", "job", "go", "copy"]) {
+        document.getElementById(id).textContent = "";
+      }
+      document.getElementById("copy").textContent = "Enter valid non-negative whole numbers for both heights.";
+      return;
+    }
+    const dates = "Requested Date Range for Flight: " + "\n" + formattedStartDate + " to " + formattedEndDate  
+    const job = "Job ID: " + title 
+    const descr = "Drone scan of " + height + "ft tower."
+    const copy = "Flight will be at or below " + th + "ft AGL at all times. Flight will remain within 400ft laterally of the tower at all times. Flight duration expected to be approximately 2 hours. Drone will be flown within VLOS at all times, in non-hazardous conditions, during daylight hours only. " + "\n" + "\n" +
 
-    "Flight to be conducted by:"  + "<br>" + "RPIC: " + name + "Part 107: " + part107 + "Aircraft: DJI Phantom 4 Pro+ V2.0" + "<br>" + "FAA reg: " + faaId + "<br>"
+    "Flight to be conducted by:"  + "\n" + "RPIC: " + name + "Part 107: " + part107 + "Aircraft: DJI Phantom 4 Pro+ V2.0" + "\n" + "FAA reg: " + faaId + "\n"
     // instr = "(Copy this section, paste in COA application)"
     // // instr2 = "--------------------------- End Copy ------------------------------"
 
 
-    // document.getElementById("instr").innerHTML = instr
-    document.getElementById("date").innerHTML = dates
-    document.getElementById("job").innerHTML = job
-    document.getElementById("go").innerHTML = descr
-    document.getElementById("copy").innerHTML = copy
-    // document.getElementById("instr2").innerHTML = instr2
+    // document.getElementById("instr").textContent = instr
+    document.getElementById("date").style.whiteSpace = "pre-line";
+    document.getElementById("date").textContent = dates
+    document.getElementById("job").style.whiteSpace = "pre-line";
+    document.getElementById("job").textContent = job
+    document.getElementById("go").style.whiteSpace = "pre-line";
+    document.getElementById("go").textContent = descr
+    document.getElementById("copy").style.whiteSpace = "pre-line";
+    document.getElementById("copy").textContent = copy
+    // document.getElementById("instr2").textContent = instr2
 
     
         
